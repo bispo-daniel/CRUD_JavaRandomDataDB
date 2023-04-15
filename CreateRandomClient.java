@@ -13,9 +13,9 @@ public class CreateRandomClient {
             stt.setString(4, GenerateRandomBank.genBank());
             int response = stt.executeUpdate();
 
-            if (response > 0) {
-                System.out.println("--GREAT SUCCESS--");
-            }
+            // if (response > 0) {
+            //     System.out.println("--GREAT SUCCESS--");
+            // }
             
         } catch (SQLException e) {
             e.printStackTrace();
