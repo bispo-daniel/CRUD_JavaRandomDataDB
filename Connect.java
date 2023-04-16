@@ -12,9 +12,9 @@ public class Connect {
         try {
             connection = DriverManager.getConnection(url, user, pass);
 
-            if(connection != null){
-                System.out.println("ok");
-            }
+            // if(connection != null){
+            //     System.out.println("ok");
+            // }
             
         } catch (SQLException e) {
             e.printStackTrace();
