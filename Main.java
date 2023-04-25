@@ -1,3 +1,5 @@
+import java.sql.SQLException;
+
 import javax.swing.*;
 
 public class Main {
@@ -9,7 +11,7 @@ public class Main {
     //     }
     // }
 
-    static void insertIntoDB(){
+    static void insertIntoDB() throws SQLException {
         String timesString = JOptionPane.showInputDialog(null, "How many random clients?");
         int times = Integer.parseInt(timesString);
 
@@ -25,7 +27,7 @@ public class Main {
         menu();
     }
 
-    static void menu(){
+    static void menu() throws SQLException {
         String optionString = JOptionPane.showInputDialog(null, "Welcome!\n\n What do you want to do?\n 1- Insert random clients\n 2- Get clients' accounts statistics\n 0- Exit");
         int option = Integer.parseInt(optionString);
 
@@ -37,7 +39,7 @@ public class Main {
                 insertIntoDB();
                 break;
             case 2:
-                ReadStatistics.read();
+                ReadStatistics.read();  
                 break;
             default:
                 JOptionPane.showMessageDialog(null, "Type a valid option...");
@@ -46,12 +48,16 @@ public class Main {
         }
 
     }
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException {
 
-        Connect.getConnection();
-        menu();
+        try {
+            Connect.getConnection();
+            menu();
 
-        // executeWithThreading();
-
+            // executeWithThreading();
+        } catch (NumberFormatException e){
+            JOptionPane.showMessageDialog(null, "Type a number...");
+            main(args);
+        }
     }
 }
